@@ -4,7 +4,8 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { PageTransition } from "@/components/PageTransition";
-import { site } from "@/content/site";
+import { BookDialogProvider } from "@/components/BookDialogProvider";
+import { site } from "@/content";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -39,11 +40,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body className="flex min-h-screen flex-col font-sans antialiased">
-        <Nav />
-        <main className="flex-1">
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
+        <BookDialogProvider>
+          <Nav />
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+        </BookDialogProvider>
       </body>
     </html>
   );

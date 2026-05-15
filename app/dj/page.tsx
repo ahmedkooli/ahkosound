@@ -3,9 +3,8 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SectionTracker } from "@/components/SectionTracker";
 import { SoundCloudEmbed } from "@/components/SoundCloudEmbed";
 import { YouTubeEmbed } from "@/components/YouTubeEmbed";
-import { sets } from "@/content/sets";
-import { site } from "@/content/site";
-import { songOfTheMoment } from "@/content/song-of-the-moment";
+import { BookButton } from "@/components/BookButton";
+import { sets, site, songOfTheMoment } from "@/content";
 
 export const metadata: Metadata = {
   title: "DJ",
@@ -14,9 +13,8 @@ export const metadata: Metadata = {
 
 const sections = [
   { id: "intro", label: "Intro" },
-  { id: "song", label: "Song of the moment" },
   { id: "sets", label: "Sets" },
-  { id: "book", label: "Bookings" },
+  { id: "song", label: "Song of the moment" },
 ];
 
 export default function DjPage() {
@@ -37,51 +35,14 @@ export default function DjPage() {
             repeat, and the sets I&apos;ve recorded.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
+            <BookButton variant="primary">Book me</BookButton>
             <a
               href="#sets"
-              className="inline-flex items-center rounded-full bg-accent px-5 py-2 text-xs font-medium uppercase tracking-widest2 text-bg transition-colors hover:bg-accent-bright"
+              className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2 text-xs font-medium uppercase tracking-widest2 text-fg transition-colors hover:border-accent hover:text-accent"
             >
-              DJ sets
+              Sets
+              <span aria-hidden>↓</span>
             </a>
-            <a
-              href="/"
-              className="inline-flex items-center rounded-full border border-line px-5 py-2 text-xs font-medium uppercase tracking-widest2 text-fg transition-colors hover:border-accent hover:text-accent"
-            >
-              Listen
-            </a>
-            <a
-              href="#book"
-              className="inline-flex items-center rounded-full border border-line px-5 py-2 text-xs font-medium uppercase tracking-widest2 text-fg transition-colors hover:border-accent hover:text-accent"
-            >
-              Book
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section id="song" className="px-6 py-16 md:px-10 md:py-24">
-        <div className="mx-auto max-w-6xl">
-          <SectionHeading eyebrow="On repeat" title="Song of the moment" />
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
-            <div className="w-full md:w-[420px] md:shrink-0">
-              <YouTubeEmbed
-                videoId={songOfTheMoment.youtubeId}
-                title={`${songOfTheMoment.title} — ${songOfTheMoment.artist}`}
-              />
-            </div>
-            <div className="md:flex-1">
-              <h3 className="font-display text-xl font-medium text-fg md:text-2xl">
-                {songOfTheMoment.title}
-              </h3>
-              <p className="mt-2 font-display text-xs uppercase tracking-widest2 text-muted">
-                {songOfTheMoment.artist}
-              </p>
-              {songOfTheMoment.note ? (
-                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
-                  {songOfTheMoment.note}
-                </p>
-              ) : null}
-            </div>
           </div>
         </div>
       </section>
@@ -121,24 +82,29 @@ export default function DjPage() {
         </div>
       </section>
 
-      <section id="book" className="px-6 py-20 md:px-10 md:py-28">
+      <section id="song" className="px-6 py-16 md:px-10 md:py-24">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading eyebrow="Gigs" title="Book a set" />
-          <div className="flex flex-wrap gap-3">
-            <a
-              href={site.socials.instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-xs font-medium uppercase tracking-widest2 text-bg transition-colors hover:bg-accent-bright"
-            >
-              DM on Instagram
-            </a>
-            <a
-              href={`mailto:${site.bookingEmail}?subject=Booking%20request%20—%20Ahko`}
-              className="inline-flex items-center rounded-full border border-line px-5 py-2.5 text-xs font-medium uppercase tracking-widest2 text-fg transition-colors hover:border-accent hover:text-accent"
-            >
-              Send me an email
-            </a>
+          <SectionHeading eyebrow="On repeat" title="Song of the moment" />
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
+            <div className="w-full md:w-[420px] md:shrink-0">
+              <YouTubeEmbed
+                videoId={songOfTheMoment.youtubeId}
+                title={`${songOfTheMoment.title} — ${songOfTheMoment.artist}`}
+              />
+            </div>
+            <div className="md:flex-1">
+              <h3 className="font-display text-xl font-medium text-fg md:text-2xl">
+                {songOfTheMoment.title}
+              </h3>
+              <p className="mt-2 font-display text-xs uppercase tracking-widest2 text-muted">
+                {songOfTheMoment.artist}
+              </p>
+              {songOfTheMoment.note ? (
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
+                  {songOfTheMoment.note}
+                </p>
+              ) : null}
+            </div>
           </div>
         </div>
       </section>

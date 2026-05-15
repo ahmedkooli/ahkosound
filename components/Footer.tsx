@@ -1,4 +1,4 @@
-import { site } from "@/content/site";
+import { site } from "@/content";
 
 const socials: Array<[keyof typeof site.socials, string]> = [
   ["spotify", "Spotify"],

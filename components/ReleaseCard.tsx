@@ -1,4 +1,4 @@
-import type { Platform, Release } from "@/content/releases";
+import type { Platform, Release } from "@/content";
 
 const platformLabel: Record<Platform, string> = {
   spotify: "Spotify",
